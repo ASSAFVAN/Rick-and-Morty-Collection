@@ -1,0 +1,15 @@
+<div class="details-card">
+    <div class="header">
+      <h2>{{ additionalCharacterData ? additionalCharacterData.name : data.name }}</h2>
+      <span class="status" [ngClass]="data.status.toLowerCase()">
+        {{ additionalCharacterData ? additionalCharacterData.status : data.status }}
+      </span>
+    </div>
+  
+    <div class="info">
+      <p><strong>Species:</strong> {{ additionalCharacterData ? additionalCharacterData.species : data.species }}</p>
+      <p><strong>Gender:</strong> {{ additionalCharacterData ? additionalCharacterData.gender : data.gender }}</p>
+      <p><strong>Origin:</strong> {{ additionalCharacterData ? additionalCharacterData.origin.name : data.origin?.name }}</p>
+      <p><strong>Location:</strong> {{ additionalCharacterData ? additionalCharacterData.location.name : data.location?.name }}</p>
+    </div>
+</div>

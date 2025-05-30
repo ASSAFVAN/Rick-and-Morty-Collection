@@ -1,0 +1,14 @@
+{
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/index.html" }
+    ],
+    "builds": [
+      {
+        "src": "apps/my-workspace/**",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist/apps/my-workspace"
+        }
+      }
+    ]
+  }

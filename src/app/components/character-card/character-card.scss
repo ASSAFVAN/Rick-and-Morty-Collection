@@ -1,0 +1,61 @@
+.card-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 10px 6px rgb(57, 255, 47);
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    margin-left: 10px;
+    .icon {
+      cursor: pointer;
+      transition: color 0.3s ease;
+      font-size: 35px;
+    }
+
+    .heart-icon {
+      &.favorited {
+        color: rgb(57, 255, 47);
+      }
+      &:not(.favorited) {
+        color: lightgray;
+      }
+    }
+
+    .edit-icon {
+      &.editable {
+        color: white;
+      }
+
+      &:not(.editable) {
+        display: none;
+      }
+    }
+
+    .delete-icon {
+      font-size: 20px;
+      &.editable {
+        color: red;
+      }
+
+      &:not(.editable) {
+        display: none;
+      }
+    }
+  }
+}

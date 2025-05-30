@@ -1,0 +1,26 @@
+:host {
+    font-size: 2rem;
+    & a {
+        color: rgb(28, 128, 23);
+        text-decoration: none;
+        &:hover {
+            color: rgb(57, 255, 47);
+        }
+    }
+}
+.favorites-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    .favorites-title {
+        text-align: center;
+    }
+    li.favorites-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,10 @@
+<a class="my-favorites" routerLink="/favorites">My Favorites</a>
+<header>
+    <h1 class="title">Rick and Morty Collection</h1>
+</header>
+    
+<section>
+    <app-search-bar (search)="handleSearchQuery($event)"></app-search-bar>
+    <button class="add-character" (click)="addCharacter()">+</button>
+</section>
+<app-characters-list [characters]="characters()" (scroll)="handleInfinteScroll()"></app-characters-list>

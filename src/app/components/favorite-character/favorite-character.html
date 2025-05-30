@@ -1,0 +1,16 @@
+<div class="favorite-card" (click)="onFavoriteCharacterClick($event)">
+    <img [src]="character()?.image" [alt]="character()?.name" />
+  
+    <div class="info">
+      <h2 class="name">{{ character()?.name }}</h2>
+  
+      <div class="details">
+        <p><strong>Status:</strong> {{ character()?.status }} <span>{{character()?.status === 'Alive' ? '🟢' : '🔴'	}}</span></p>
+        <p><strong>Species:</strong> {{ character()?.species }}</p>
+        <p *ngIf="character()?.type"><strong>Type:</strong> {{ character()?.type }}</p>
+        <p><strong>Gender:</strong> {{ character()?.gender }}</p>
+        <p><strong>Location:</strong> {{ character()?.location?.name }}</p>
+      </div>
+    </div>
+  </div>
+  

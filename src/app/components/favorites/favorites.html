@@ -1,0 +1,23 @@
+
+  @if (favorites().length) {
+    <div class="favorites-container">
+        <p class="favorites-title">My Favorites Characters</p>
+        <ul>
+            <li class="favorites-list">
+                @for (favorite of favorites(); track favorite.id) {
+                    <app-favorite-character [character]="favorite" (removeFavorite)="handleRemoveFavorite(favorite.id)"></app-favorite-character>
+                }
+            </li>
+            
+        </ul>
+        <a routerLink="/">Home</a>
+    </div>
+  } @else {
+    <div class="favorites-container">
+        <p>No characters added to favorites yet.</p>
+        <p class="back">
+            <span>Go</span>
+            <a routerLink="/"> back</a>
+            to homepage to add some!</p>
+    </div>
+  }

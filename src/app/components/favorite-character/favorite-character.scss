@@ -1,0 +1,53 @@
+.favorite-card {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    padding: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(184, 183, 183, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 16px rgba(57, 255, 47, 0.3);
+    }
+  
+    img {
+      width: 60%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 50%;
+      border-bottom: 1px solid #333;
+    }
+  
+    .info {
+      padding: 1rem;
+  
+      .name {
+        margin: 0;
+        font-size: 1.4rem;
+        color: #39ff2f;
+        text-align: center;
+      }
+  
+      .details {
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+  
+        p {
+          margin: 0.25rem 0;
+          strong {
+            color: #9fff6e;
+          }
+        }
+      }
+    }
+  }
+  

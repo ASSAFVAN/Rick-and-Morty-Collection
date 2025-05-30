@@ -1,0 +1,68 @@
+<div class="character-form-container">
+    <h2>Add new character</h2>
+  
+    <form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+  
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" />
+        <small *ngIf="characterForm.get('name')?.touched && characterForm.get('name')?.invalid">Name is required.</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status">
+          <option value="" disabled>Select status</option>
+          <option *ngFor="let option of statusOptions" [value]="option">{{ option }}</option>
+        </select>
+        <small *ngIf="characterForm.get('status')?.touched && characterForm.get('status')?.invalid">Status is required.</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="species">Species</label>
+        <input id="species" formControlName="species" />
+        <small *ngIf="characterForm.get('species')?.touched && characterForm.get('species')?.invalid">Species is required.</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input id="type" formControlName="type" />
+        <small *ngIf="characterForm.get('type')?.touched && characterForm.get('type')?.invalid">Type is required.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="origin">Origin</label>
+        <input id="origin" formControlName="origin" />
+        <small *ngIf="characterForm.get('type')?.touched && characterForm.get('type')?.invalid">Type is required.</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" formControlName="gender">
+          <option value="" disabled>Select gender</option>
+          <option *ngFor="let option of genderOptions" [value]="option">{{ option }}</option>
+        </select>
+        <small *ngIf="characterForm.get('gender')?.touched && characterForm.get('gender')?.invalid">Gender is required.</small>
+      </div>
+  
+      <div class="form-group">
+        <label for="image">Image URL</label>
+        <input id="image" formControlName="image" />
+        <small *ngIf="characterForm.get('image')?.touched && characterForm.get('image')?.invalid">
+          A valid image URL is required.
+        </small>
+      </div>
+  
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input id="location" formControlName="location" />
+        <small *ngIf="characterForm.get('location')?.touched && characterForm.get('location')?.invalid">Location is required.</small>
+      </div>
+      
+      <div class="buttons">
+          <button class="cancel" (click)="cancel()">Cancel</button>
+          <button type="submit" [disabled]="characterForm.invalid">{{submitLabel}}</button>
+      </div>
+    </form>
+  </div>
+  

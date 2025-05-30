@@ -1,0 +1,25 @@
+<div class="card-container">
+    <img
+      [src]="character()?.image"
+      [alt]="character()?.name"
+      (click)="openDetailsModal()"
+    >
+    <div class="actions">
+      <span 
+        class="icon heart-icon" 
+        [class.favorited]="isFavorite()"
+        (click)="toggleFavorite($event)"
+      >♥</span>
+      <span
+      class="icon edit-icon"
+      [class.editable]="isEditable()"
+      (click)="editCharacter()"
+      >&#9998;</span>
+      <span
+      class="icon delete-icon"
+      [class.editable]="isEditable()"
+      (click)="onDeleteCharacter(character()!)"
+      >&#10060;</span>
+    </div>
+  </div>
+  
