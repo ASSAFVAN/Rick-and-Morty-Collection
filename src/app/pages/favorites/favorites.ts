@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@ang
 import { CommonModule } from '@angular/common';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { RouterLink } from '@angular/router';
-import { FavoriteCharacterComponent } from "../favorite-character/favorite-character";
+import { FavoriteCharacterComponent } from "../../components/favorite-character/favorite-character";
 import { Character } from 'src/app/types/characters.interface';
 
 @Component({
