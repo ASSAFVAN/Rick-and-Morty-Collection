@@ -4,11 +4,12 @@
     ],
     "builds": [
       {
-        "src": "apps/my-workspace/**",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "dist/apps/my-workspace"
-        }
+        "src": "package.json",
+        "use": "@vercel/static-build"
       }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
+  
