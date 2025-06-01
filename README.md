@@ -79,6 +79,8 @@ The project is structured in an NX workspace (single-project mode), with separat
 | **CharacterCardComponent** | Shows character image, name, and action buttons (Add to favorites, Edit, Delete). Edit/Delete only for locally saved characters. |
 | **CharacterDetailsComponent** | Dialog component showing detailed character info when clicking on a character image.          |
 | **AddEditCharacterComponent** | Dialog component containing reactive forms for adding or editing characters stored locally.      |
+| **FavoritesComponent** | Displays the list of user's favorite characters using FavoriteCharacterComponent.                 |
+
 ---
 
 ## Services
