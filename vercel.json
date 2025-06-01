@@ -7,7 +7,7 @@
         "src": "package.json",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "dist/my-workspace"
+          "distDir": "dist/my-workspace/browser"
         }
       }
     ]
