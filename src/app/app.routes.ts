@@ -1,8 +1,16 @@
 import { Route } from '@angular/router';
-import { MainComponent } from './pages/main/main';
-import { FavoritesComponent } from './pages/favorites/favorites';
 
 export const appRoutes: Route[] = [
-    { path: '', component: MainComponent },
-    { path: 'favorites', component: FavoritesComponent },
+  {
+    path: '',
+    loadComponent: () =>
+      import('../app/pages/main/main').then((c) => c.MainComponent),
+  },
+  {
+    path: 'favorites',
+    loadComponent: () =>
+      import('../app/pages/favorites/favorites').then(
+        (c) => c.FavoritesComponent
+      ),
+  },
 ];

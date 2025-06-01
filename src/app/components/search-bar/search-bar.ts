@@ -18,7 +18,7 @@ export class SearchBarComponent implements OnInit{
   ngOnInit(): void {
     this.searchCtrl.valueChanges.pipe(
       debounceTime(300),
-      distinctUntilChanged()
+      distinctUntilChanged(),
     ).subscribe(value => {
       if (value !== null) {        
         this.searchQuery(value.trim());
