@@ -135,7 +135,7 @@ The project is structured in an NX workspace (single-project mode), with separat
 - **Map API Integration:** Currently, the application does not include map integration for displaying character locations - couldn't understand how to accomplish it without having the Rick and Morty API providing longitude and latitude.
 - **Chat System:** Real-time chat for users to discuss characters and events is not implemented yet.  
 - **NX Monorepo Usage:** Though built in an NX workspace, this project is currently a single app, not a full monorepo.  
-- **No deployment yet.
+- **Deployment link: https://rick-and-morty-collection-qwfo.vercel.app/.
 ---
 
 ## Getting Started
