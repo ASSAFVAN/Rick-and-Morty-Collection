@@ -7,7 +7,7 @@ import { CharactersService } from 'src/app/services/characters.service';
 import { Character } from 'src/app/types/characters.interface';
 
 @Component({
-  selector: 'app-add-character',
+  selector: 'rc-add-character',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-edit-character.html',
   styleUrl: './add-edit-character.scss',

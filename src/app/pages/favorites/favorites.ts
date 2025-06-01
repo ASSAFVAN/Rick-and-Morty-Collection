@@ -6,7 +6,7 @@ import { FavoriteCharacterComponent } from "../../components/favorite-character/
 import { Character } from 'src/app/types/characters.interface';
 
 @Component({
-  selector: 'app-favorites',
+  selector: 'rc-favorites',
   imports: [CommonModule, RouterLink, FavoriteCharacterComponent],
   templateUrl: './favorites.html',
   styleUrl: './favorites.scss',

@@ -5,7 +5,7 @@
         <ul>
             <li class="favorites-list">
                 @for (favorite of favorites(); track favorite.id) {
-                    <app-favorite-character [character]="favorite" (removeFavorite)="handleRemoveFavorite(favorite.id)"></app-favorite-character>
+                    <rc-favorite-character [character]="favorite" (removeFavorite)="handleRemoveFavorite(favorite.id)"></rc-favorite-character>
                 }
             </li>
             

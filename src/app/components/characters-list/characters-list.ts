@@ -8,7 +8,7 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { CharactersService } from 'src/app/services/characters.service';
 
 @Component({
-  selector: 'app-characters-list',
+  selector: 'rc-characters-list',
   imports: [CommonModule, CharacterCardComponent, InfiniteScrollDirective],
   templateUrl: './characters-list.html',
   styleUrl: './characters-list.scss',

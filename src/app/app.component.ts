@@ -5,7 +5,7 @@ import { Character } from './types/characters.interface';
 
 @Component({
   imports: [RouterModule],
-  selector: 'app-root',
+  selector: 'rc-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -4,7 +4,7 @@
 </header>
     
 <section>
-    <app-search-bar (search)="handleSearchQuery($event)"></app-search-bar>
+    <rc-search-bar (search)="handleSearchQuery($event)"></rc-search-bar>
     <button class="add-character" (click)="addCharacter()">+</button>
 </section>
-<app-characters-list [characters]="characters()" (scroll)="handleInfinteScroll()"></app-characters-list>
+<rc-characters-list [characters]="characters()" (scroll)="handleInfinteScroll()"></rc-characters-list>

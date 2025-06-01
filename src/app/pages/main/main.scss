@@ -40,12 +40,12 @@ section {
   gap: 1rem;
 
   > a,
-  > app-search-bar,
+  > rc-search-bar,
   > button {
     flex-shrink: 0;
   }
 
-  > app-search-bar {
+  > rc-search-bar {
     flex: 1;
   }
 }

@@ -4,7 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
-  selector: 'app-search-bar',
+  selector: 'rc-search-bar',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './search-bar.html',
   styleUrl: './search-bar.scss',

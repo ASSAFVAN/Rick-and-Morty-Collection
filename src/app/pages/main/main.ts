@@ -11,7 +11,7 @@ import { CharactersService } from 'src/app/services/characters.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-main',
+  selector: 'rc-main',
   imports: [CommonModule, CharactersListComponent, SearchBarComponent, RouterLink],
   templateUrl: './main.html',
   styleUrl: './main.scss',

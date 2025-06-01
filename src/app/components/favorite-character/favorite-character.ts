@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Character } from 'src/app/types/characters.interface';
 
 @Component({
-  selector: 'app-favorite-character',
+  selector: 'rc-favorite-character',
   imports: [CommonModule],
   templateUrl: './favorite-character.html',
   styleUrl: './favorite-character.scss',

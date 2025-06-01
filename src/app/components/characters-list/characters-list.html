@@ -6,7 +6,7 @@
         (scrolled)="onScroll($event)"
     >
         @for (character of characters() ?? []; track character.id) {
-            <app-character-card [character]="character" (deleteCharacter)="handleDeteleCharacter($event)"></app-character-card>
+            <rc-character-card [character]="character" (deleteCharacter)="handleDeteleCharacter($event)"></rc-character-card>
         }
     </ul>
 </div>

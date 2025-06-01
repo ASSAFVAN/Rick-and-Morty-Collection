@@ -9,7 +9,7 @@ import { AddEditCharacterComponent } from '../add-edit-character/add-edit-charac
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-character-card',
+  selector: 'rc-character-card',
   imports: [CommonModule],
   templateUrl: './character-card.html',
   styleUrl: './character-card.scss',

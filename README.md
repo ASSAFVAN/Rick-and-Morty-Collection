@@ -1,82 +1,146 @@
-# MyWorkspace
+# Rick and Morty Character Collection
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A comprehensive Angular application for managing a collection of Rick and Morty characters using RxJS, Signals, Angular 19+, and the Rick and Morty API.  
+This project is built within an NX workspace as a single Angular application.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Table of Contents
 
-## Finish your remote caching setup
+- [Project Overview](#project-overview)  
+- [Features](#features)  
+- [Architecture](#architecture)  
+- [Technologies Used](#technologies-used)  
+- [Components](#components)  
+- [Services](#services)  
+- [RxJS Usage](#rxjs-usage)  
+- [Change Detection](#change-detection)  
+- [Styling & UI/UX](#styling--uiux)  
+- [Testing](#testing)  
+- [Limitations & Future Work](#limitations--future-work)  
+- [Getting Started](#getting-started)  
+- [Deployment](#deployment)  
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/0wk0xqgTTr)
+---
 
+## Project Overview
 
-## Run tasks
+This Angular application enables users to browse, create, update, and delete Rick and Morty characters. It fetches character data and images from the [Rick and Morty API](https://rickandmortyapi.com/), supports infinite scrolling for seamless browsing, and allows users to save favorite characters locally.
 
-To run the dev server for your app, use:
+---
 
-```sh
-npx nx serve my-workspace
-```
+## Features
 
-To create a production bundle:
+- **Character Browsing:** View characters fetched from the Rick and Morty API.  
+- **Search:** Filter characters by name, species, or type using a search bar with API-backed filtering.  
+- **Infinite Scrolling:** Load more characters automatically as the user scrolls.  
+- **CRUD Operations:**  
+  - Create new characters (stored locally).  
+  - Update or delete only locally created characters.  
+- **Favorites:** Add characters to favorites, saved persistently using localStorage.  
+- **Character Details:** View detailed info in a dialog popup.  
+- **Reactive Forms:** Character creation and editing utilize Angular reactive forms with validation.  
+- **Animations & Hover Effects:** Smooth transitions and interactive UI elements for an enhanced user experience.  
+- **Angular CDK Dialog:** Used for modals to display character details and add/edit forms.  
+- **Responsive Design:** Fully responsive using SCSS with Flexbox/Grid and media queries.
 
-```sh
-npx nx build my-workspace
-```
+---
 
-To see all available targets to run for a project, run:
+## Architecture
 
-```sh
-npx nx show project my-workspace
-```
+The project is structured in an NX workspace (single-project mode), with separation of concerns using Angular modules, components, and services.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+- **Pages Module:** Contains main page components (main component).  
+- **Shared Components:** Search bar, characters list, character card, favorites list, and add/edit forms.  
+- **Services:** Abstract API calls, localStorage handling, and business logic.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Add new projects
+## Technologies Used
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+- Angular 19+  (Signals)
+- Nx Workspace (single project)  
+- RxJS (switchMap, mergeMap, debounceTime, distinctUntilChanged, etc.)  
+- Angular CDK (Dialog module)  
+- ngx-infinite-scroll  
+- Jest (for unit testing)  
+- SCSS with Flexbox/Grid, media queries, and CSS animations  
+- Rick and Morty API ([https://rickandmortyapi.com/](https://rickandmortyapi.com/))  
 
-Use the plugin's generator to create new projects.
+---
 
-To generate a new application, use:
+## Components
 
-```sh
-npx nx g @nx/angular:app demo
-```
+| Component              | Description                                                                                      |
+|------------------------|--------------------------------------------------------------------------------------------------|
+| **MainComponent**      | Root page component housing the search bar, characters list, and favorites display.             |
+| **SearchBarComponent**  | Input for filtering characters by name, species, and type, connected to API filtering.           |
+| **CharactersListComponent** | Displays a paginated, infinite scroll list of characters, each rendered with CharacterCardComponent. |
+| **CharacterCardComponent** | Shows character image, name, and action buttons (Add to favorites, Edit, Delete). Edit/Delete only for locally saved characters. |
+| **CharacterDetailsComponent** | Dialog component showing detailed character info when clicking on a character image.          |
+| **AddEditCharacterComponent** | Dialog component containing reactive forms for adding or editing characters stored locally.      |
+---
 
-To generate a new library, use:
+## Services
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
+| Service                | Purpose                                                                                         |
+|------------------------|------------------------------------------------------------------------------------------------|
+| **LocalStorageService** | General localStorage handling (CRUD for saved data).                                           |
+| **CharactersService**   | Extends LocalStorageService; manages CRUD for locally created characters.                      |
+| **FavoritesService**    | Extends LocalStorageService; manages favorite characters list.                                 |
+| **DataService**         | Handles all HTTP requests to Rick and Morty API and exposes data streams as observables.       |
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+---
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## RxJS Usage
 
+- **API Calls:** `DataService` uses RxJS `HttpClient` with operators like `switchMap`, `forkJoin`, `map`, and `catchError` to manage API requests efficiently.  
+- **Search Bar:** Uses `debounceTime` and `distinctUntilChanged` to optimize API calls while typing search queries.  
+- **Infinite Scroll:** Combines observables for scroll events and API calls with operators to append additional character pages seamlessly.  
+- **Form Controls:** Reactive form value changes subscribed to observables for validation and dynamic behavior.
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Install Nx Console
+## Change Detection
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+- The application uses Angular's default change detection strategy (`Default`) with optimized observable subscriptions and `OnPush` on specific components to improve performance.  
+- Components relying on input properties and observables use `ChangeDetectionStrategy.OnPush` to minimize unnecessary re-renders.  
+- Change detection strategy and reasoning are documented in the relevant component files.
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Useful links
+## Styling & UI/UX
 
-Learn more:
+- **SCSS:** Modular styling with variables and mixins for consistency.  
+- **Layout:** Utilizes Flexbox and CSS Grid for responsive, clean layout.  
+- **Responsive Design:** Media queries ensure usability across mobile, tablet, and desktop screens.  
+- **Animations:** Smooth fade-in and hover effects on character cards and buttons for better user engagement.  
+- **Icon Sets:** Custom icons and graphics used to create a unique visual identity.  
+- **Interactive Elements:** Buttons and lists have hover states and transitions to enhance interactivity.
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Testing
+
+- Jest is used for unit testing with 86% code coverage.  
+- Tests cover components, services, and RxJS logic to ensure robustness.  
+- Sample tests include form validation, service CRUD operations, and observable streams.
+
+---
+
+## Limitations & Future Work
+
+- **Map API Integration:** Currently, the application does not include map integration for displaying character locations - couldn't understand how to accomplish it without having the Rick and Morty API providing longitude and latitude.
+- **Chat System:** Real-time chat for users to discuss characters and events is not implemented yet.  
+- **NX Monorepo Usage:** Though built in an NX workspace, this project is currently a single app, not a full monorepo.  
+- **No deployment yet.
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18+  
+- Angular CLI v19+  
+- Nx CLI  
+

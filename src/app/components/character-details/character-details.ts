@@ -5,7 +5,7 @@ import { CharactersService } from 'src/app/services/characters.service';
 import { Character } from 'src/app/types/characters.interface';
 
 @Component({
-  selector: 'app-character-details',
+  selector: 'rc-character-details',
   imports: [CommonModule],
   templateUrl: './character-details.html',
   styleUrl: './character-details.scss',
