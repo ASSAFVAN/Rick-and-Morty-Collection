@@ -9,6 +9,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { AddEditCharacterComponent } from 'src/app/components/add-edit-character/add-edit-character';
 import { CharactersService } from 'src/app/services/characters.service';
 import { RouterLink } from '@angular/router';
+import { getTakeUntilDestroyed } from 'src/app/utils/utils';
 
 @Component({
   selector: 'rc-main',
@@ -28,6 +29,7 @@ export class MainComponent implements OnInit{
   dataService = inject(DataService);
   charactersService = inject(CharactersService);
   dialog = inject(Dialog);
+  takeUntilDestroyed = getTakeUntilDestroyed();
 
   ngOnInit(): void {
     this.loadInitCharacters();
@@ -35,17 +37,21 @@ export class MainComponent implements OnInit{
   }
 
   loadInitCharacters(): void {
-    this.dataService.getCharacters().subscribe((res) => {
-      this.cachedCharacters$.next([...res.results, ...this.charactersService.getCharacters()]);
-      this.characters.set([...res.results, ...this.charactersService.getCharacters()]);
-      this.nextPageUrl = res.info.next; 
-    })
+    this.dataService.getCharacters().pipe(
+      this.takeUntilDestroyed(), 
+      tap((res) => {
+        this.cachedCharacters$.next([...res.results, ...this.charactersService.getCharacters()]);
+        this.characters.set([...res.results, ...this.charactersService.getCharacters()]);
+        this.nextPageUrl = res.info.next; 
+      })
+      ).subscribe()
   }
 
   triggerListeners(): void {
     this.searchTerm$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
+      this.takeUntilDestroyed(),
       switchMap((query: string) => {
         if (!query) return this.cachedCharacters$;
         return forkJoin([
@@ -76,11 +82,14 @@ export class MainComponent implements OnInit{
     if (this.isLoading) return;
     this.isLoading = true;
     if (this.nextPageUrl) {
-      this.dataService.getNextCharacters(this.nextPageUrl).subscribe((res)=> {
-        this.characters.set([...this.characters(), ...res.results])
-        this.nextPageUrl = res.info.next || '';
-        this.isLoading = false;
-      })
+      this.dataService.getNextCharacters(this.nextPageUrl).pipe(
+        this.takeUntilDestroyed(), tap(
+          (res)=> {
+            this.characters.set([...this.characters(), ...res.results])
+            this.nextPageUrl = res.info.next || '';
+            this.isLoading = false;
+          }
+        )).subscribe()
     }
     this.isLoading = false;
   }

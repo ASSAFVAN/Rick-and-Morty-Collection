@@ -96,7 +96,7 @@ The project is structured in an NX workspace (single-project mode), with separat
 
 ## RxJS Usage
 
-- **API Calls:** `DataService` uses RxJS `HttpClient` with operators like `switchMap`, `forkJoin`, `map`, and `catchError` to manage API requests efficiently.  
+- **API Calls:** `DataService` uses RxJS `HttpClient` with operators like `switchMap`, `forkJoin`, `map`, `tap`, `getTakeUntilDestroyed` and `catchError` to manage API requests efficiently.  
 - **Search Bar:** Uses `debounceTime` and `distinctUntilChanged` to optimize API calls while typing search queries.  
 - **Infinite Scroll:** Combines observables for scroll events and API calls with operators to append additional character pages seamlessly.  
 - **Form Controls:** Reactive form value changes subscribed to observables for validation and dynamic behavior.
